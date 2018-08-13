@@ -3,6 +3,7 @@ out/
 .idea
 .iml
 .gradle
+build/
 
 # Compiled class file
 *.class

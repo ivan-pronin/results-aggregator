@@ -11,7 +11,7 @@ public class BootApplication {
     public static void main(String args[]) {
         ConfigurableApplicationContext context = SpringApplication.run(BootApplication.class);
         DataService dataService = context.getBean(DataService.class);
-        dataService.getLeagues();
-        dataService.getFixture();
+//        dataService.getLeagues();
+//        dataService.getFixture();
     }
 }

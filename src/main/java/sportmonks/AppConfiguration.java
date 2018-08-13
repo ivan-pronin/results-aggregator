@@ -6,11 +6,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import sportmonks.core.data.Quote;
+import sportmonks.db.DbConfiguration;
 
 @Configuration
+@Import(DbConfiguration.class)
 public class AppConfiguration {
 
     private static final String URL = "https://soccer.sportmonks.com/api/v2.0/fixtures/1625177";
