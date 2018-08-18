@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "id": 271,
+      "legacy_id": 43,
+      "country_id": 320,
+      "name": "Superliga",
+      "is_cup": false,
+      "current_season_id": 12919,
+      "current_round_id": 147057,
+      "current_stage_id": 7088928,
+      "live_standings": true,
+      "coverage": {
+        "topscorer_goals": true,
+        "topscorer_assists": true,
+        "topscorer_cards": true
+      }
+    },
+    {
+      "id": 501,
+      "legacy_id": 66,
+      "country_id": 1161,
+      "name": "Premiership",
+      "is_cup": false,
+      "current_season_id": 12963,
+      "current_round_id": 147747,
+      "current_stage_id": 7508262,
+      "live_standings": true,
+      "coverage": {
+        "topscorer_goals": true,
+        "topscorer_assists": true,
+        "topscorer_cards": true
+      }
+    }
+  ]
+}

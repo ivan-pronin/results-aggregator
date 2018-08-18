@@ -32,6 +32,7 @@ dependencies {
     implementation 'org.springframework:spring-web'
 
     // Use JUnit test framework
-    testImplementation 'junit:junit'
+    testImplementation 'org.hamcrest:hamcrest-junit:2.0.0.0'
+    testImplementation 'org.springframework:spring-test'
 }
 

@@ -1,2 +1,4 @@
+getAllLeagues      https://soccer.sportmonks.com/api/v2.0/leagues?api_token=01pV76Qt4NZe3ay5eRSaqq8cQl8objq2zjEqZc0YE7Sj7WbMkww3uoXBbq8s
+
 getFixtureById     https://soccer.sportmonks.com/api/v2.0/fixtures/1625177?api_token=01pV76Qt4NZe3ay5eRSaqq8cQl8objq2zjEqZc0YE7Sj7WbMkww3uoXBbq8s
 getFixturesBetween https://soccer.sportmonks.com/api/v2.0/fixtures/between/2018-03-01/2018-03-30?api_token=01pV76Qt4NZe3ay5eRSaqq8cQl8objq2zjEqZc0YE7Sj7WbMkww3uoXBbq8s
