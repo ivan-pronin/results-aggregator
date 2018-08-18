@@ -1,8 +1,7 @@
 package com.sportmonks.aggregate.rest.service;
 
-import com.sportmonks.aggregate.core.data.entity.League;
+import com.sportmonks.aggregate.core.data.entity.Country;
 import com.sportmonks.aggregate.rest.RestConfiguration;
-import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,24 +14,20 @@ import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = RestConfiguration.class)
-public class LeaguesRestDataServiceTest {
-
-    private static final int SUPERLIGA_ID = 271;
+public class CountriesRestDataServiceTest {
 
     @Autowired
-    private IGetByIdOrAllRestDataService<League> dataService;
+    private IGetByIdOrAllRestDataService<Country> dataService;
 
     @Test
     public void getAllTest() {
-        List<League> entities = dataService.getAll();
-        Assert.assertEquals(2, entities.size());
-        Assert.assertNotNull(entities.get(1));
-        Assert.assertThat(entities.stream().anyMatch(l -> l.getId() == SUPERLIGA_ID), CoreMatchers.is(true));
+        List<Country> entities = dataService.getAll();
+        Assert.assertNotNull(entities.get(0));
     }
 
     @Test
     public void getByIdTest() {
-        Optional<League> entity = dataService.getById(SUPERLIGA_ID);
+        Optional<Country> entity = dataService.getById(2);
         Assert.assertTrue(entity.isPresent());
         Assert.assertNotNull(entity.get());
     }

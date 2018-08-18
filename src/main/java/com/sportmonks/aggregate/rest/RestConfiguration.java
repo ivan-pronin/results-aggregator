@@ -1,11 +1,13 @@
 package com.sportmonks.aggregate.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sportmonks.aggregate.BootApplication;
-import com.sportmonks.aggregate.core.data.Quote;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
+import com.sportmonks.aggregate.core.data.entity.Continent;
+import com.sportmonks.aggregate.core.data.entity.Country;
+import com.sportmonks.aggregate.core.data.entity.League;
+import com.sportmonks.aggregate.core.data.entity.Season;
+import com.sportmonks.aggregate.rest.service.GetByIdOrAllRestDataService;
+import com.sportmonks.aggregate.rest.service.IGetByIdOrAllRestDataService;
+import com.sportmonks.aggregate.rest.service.types.EndpointType;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,7 +22,6 @@ import java.util.function.Supplier;
 @ComponentScan("com.sportmonks.aggregate.rest")
 public class RestConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(BootApplication.class);
     private static final String API_URL = "https://soccer.sportmonks.com/api/";
     private static final String VERSION = "v2.0/";
     private static final String API_TOKEN = "01pV76Qt4NZe3ay5eRSaqq8cQl8objq2zjEqZc0YE7Sj7WbMkww3uoXBbq8s";
@@ -51,12 +52,23 @@ public class RestConfiguration {
         return UriComponentsBuilder.fromUriString(API_URL + VERSION).queryParam("api_token", API_TOKEN);
     }
 
-    //    @Bean
-    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-        return args -> {
-            Quote quote = restTemplate.getForObject(
-                    "http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
-            log.info(quote.toString());
-        };
+    @Bean
+    public IGetByIdOrAllRestDataService<Continent> continentIGetByIdOrAllRestDataService() {
+        return new GetByIdOrAllRestDataService<>(EndpointType.СONTINENTS.get());
+    }
+
+    @Bean
+    public IGetByIdOrAllRestDataService<Country> countryIGetByIdOrAllRestDataService() {
+        return new GetByIdOrAllRestDataService<>(EndpointType.COUNTRIES.get());
+    }
+
+    @Bean
+    public IGetByIdOrAllRestDataService<League> leagueIGetByIdOrAllRestDataService() {
+        return new GetByIdOrAllRestDataService<>(EndpointType.LEAGUES.get());
+    }
+
+    @Bean
+    public IGetByIdOrAllRestDataService<Season> seasonIGetByIdOrAllRestDataService() {
+        return new GetByIdOrAllRestDataService<>(EndpointType.SEASONS.get());
     }
 }

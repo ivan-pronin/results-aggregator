@@ -24,27 +24,27 @@ public class FixturesRestDataServiceTest {
     private static final long FIXTURE_ID = 1625177;
 
     @Autowired
-    private AbstractFixturesRestDataService dataService;
+    private IFixturesRestDataService dataService;
 
     @Test
     public void getBetweenDatesTest() {
-        List<Fixture> fixtures = dataService.getBetweenDates(FROM, FROM);
-        Assert.assertThat(fixtures, is(not(empty())));
-        Assert.assertTrue(fixtures.stream().anyMatch(f -> f.getLeagueId() == SUPERLIGA_ID));
+        List<Fixture> entities = dataService.getBetweenDates(FROM, FROM);
+        Assert.assertThat(entities, is(not(empty())));
+        Assert.assertTrue(entities.stream().anyMatch(f -> f.getLeagueId() == SUPERLIGA_ID));
     }
 
     @Test
     public void getBetweenDatesByTeamTest() {
-        List<Fixture> fixtures = dataService.getBetweenDatesByTeam(FROM, FROM, LOCAL_TEAM_ID);
-        Assert.assertThat(fixtures, is(not(empty())));
-        Assert.assertTrue(fixtures.stream().anyMatch(f -> f.getLocalteamId() == LOCAL_TEAM_ID));
+        List<Fixture> entities = dataService.getBetweenDatesByTeam(FROM, FROM, LOCAL_TEAM_ID);
+        Assert.assertThat(entities, is(not(empty())));
+        Assert.assertTrue(entities.stream().anyMatch(f -> f.getLocalteamId() == LOCAL_TEAM_ID));
     }
 
     @Test
     public void getForDateTest() {
-        List<Fixture> fixtures = dataService.getForDate(FROM);
-        Assert.assertThat(fixtures, is(not(empty())));
-        Assert.assertTrue(fixtures.stream().anyMatch(f -> f.getLocalteamId() == LOCAL_TEAM_ID));
+        List<Fixture> entities = dataService.getForDate(FROM);
+        Assert.assertThat(entities, is(not(empty())));
+        Assert.assertTrue(entities.stream().anyMatch(f -> f.getLocalteamId() == LOCAL_TEAM_ID));
     }
 
     @Test
@@ -56,8 +56,8 @@ public class FixturesRestDataServiceTest {
 
     @Test
     public void getMultipleByIdsTest() {
-        List<Fixture> fixtures = dataService.getMultipleByIds(String.valueOf(FIXTURE_ID));
-        Assert.assertThat(fixtures, is(not(empty())));
-        Assert.assertTrue(fixtures.stream().anyMatch(f -> f.getLocalteamId() == LOCAL_TEAM_ID));
+        List<Fixture> entities = dataService.getMultipleByIds(String.valueOf(FIXTURE_ID));
+        Assert.assertThat(entities, is(not(empty())));
+        Assert.assertTrue(entities.stream().anyMatch(f -> f.getLocalteamId() == LOCAL_TEAM_ID));
     }
 }

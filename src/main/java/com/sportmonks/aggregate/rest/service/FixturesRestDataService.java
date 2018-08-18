@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class FixturesRestDataService extends AbstractFixturesRestDataService {
+public class FixturesRestDataService implements IFixturesRestDataService {
 
     private static final String BASE_PATH = "fixtures/";
     private static final String BETWEEN_DATES = BASE_PATH + "between/{from}/{to}";
