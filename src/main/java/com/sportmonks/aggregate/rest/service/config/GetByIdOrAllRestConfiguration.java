@@ -44,4 +44,9 @@ public class GetByIdOrAllRestConfiguration {
     public IGetByIdOrAllRestDataService<Player> playerIGetByIdOrAllRestDataService() {
         return new GetByIdOrAllRestDataService<>(EndpointType.PLAYERS.get());
     }
+
+    @Bean
+    public IGetByIdOrAllRestDataService<Coach> coachIGetByIdOrAllRestDataService() {
+        return new GetByIdOrAllRestDataService<>(EndpointType.COACHES.get());
+    }
 }

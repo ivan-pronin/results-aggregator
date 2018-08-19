@@ -12,6 +12,7 @@ public enum EndpointType {
     BOOKMAKERS(new TypeContainerData<>("bookmakers", Bookmaker.class, Bookmaker[].class)),
     MARKETS(new TypeContainerData<>("markets", Market.class, Market[].class)),
     PLAYERS(new TypeContainerData<>("players", Player.class, Player[].class)),
+    COACHES(new TypeContainerData<>("coaches", Coach.class, Coach[].class)),
 
     // ByIdOrSeason containers
     STAGES(new TypeContainerData<>("stages", Stage.class, Stage[].class)),
