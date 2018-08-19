@@ -1,0 +1,67 @@
+{
+  "data": [
+    {
+      "id": 271,
+      "legacy_id": 43,
+      "country_id": 320,
+      "name": "Superliga",
+      "is_cup": false,
+      "current_season_id": 12919,
+      "current_round_id": 147057,
+      "current_stage_id": 7088928,
+      "live_standings": true,
+      "coverage": {
+        "topscorer_goals": true,
+        "topscorer_assists": true,
+        "topscorer_cards": true
+      }
+    },
+    {
+      "id": 501,
+      "legacy_id": 66,
+      "country_id": 1161,
+      "name": "Premiership",
+      "is_cup": false,
+      "current_season_id": 12963,
+      "current_round_id": 147747,
+      "current_stage_id": 7508262,
+      "live_standings": true,
+      "coverage": {
+        "topscorer_goals": true,
+        "topscorer_assists": true,
+        "topscorer_cards": true
+      }
+    }
+  ],
+  "meta": {
+    "subscription": {
+      "started_at": {
+        "date": "2017-03-20 21:02:56.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
+      },
+      "trial_ends_at": null,
+      "ends_at": null
+    },
+    "plan": {
+      "name": "Free Plan",
+      "price": "0.00",
+      "request_limit": "3,1"
+    },
+    "sports": [
+      {
+        "id": 1,
+        "name": "Soccer",
+        "current": true
+      }
+    ],
+    "pagination": {
+      "total": 2,
+      "count": 2,
+      "per_page": 100,
+      "current_page": 1,
+      "total_pages": 1,
+      "links": []
+    }
+  }
+}

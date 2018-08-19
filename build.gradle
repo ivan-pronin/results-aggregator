@@ -9,11 +9,7 @@ apply plugin: 'io.spring.dependency-management'
 repositories {
     jcenter()
     mavenCentral()
-}
-
-bootJar {
-    baseName = project.name
-    version = '0.1.0'
+    maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
 }
 
 sourceCompatibility = 1.8
@@ -24,11 +20,12 @@ dependencies {
 //    api
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework:spring-web'
-    implementation 'com.fasterxml.jackson.core:jackson-databind'
 
     // Use JUnit test framework
-    testImplementation 'junit:junit'
+    testImplementation 'org.hamcrest:hamcrest-junit:2.0.0.0'
+    testImplementation 'org.springframework:spring-test'
 }
 
