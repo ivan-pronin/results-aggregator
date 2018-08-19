@@ -13,14 +13,14 @@ Coverage by code:
 * Livescores
 * Commentaries
 * Video highlights
-* Head2HEad
+* Head2HEad +++
 * TV Stations
 * Standings
 * Teams +++
 * Topscorers
 * Venues +++
 * Rounds +++
-* Pre-Match Odds
+* Pre-Match Odds +++
 * In-Play Odds
 * Bookmakers +++
 * Markets +++
