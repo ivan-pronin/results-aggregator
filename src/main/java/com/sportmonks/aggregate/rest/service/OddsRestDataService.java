@@ -8,6 +8,8 @@ import org.springframework.web.util.UriComponents;
 
 import java.util.List;
 
+import static com.sportmonks.aggregate.rest.service.constants.Constants.INCLUDES;
+
 @Component
 public class OddsRestDataService implements IOddsRestDataService {
 
@@ -22,19 +24,34 @@ public class OddsRestDataService implements IOddsRestDataService {
 
     @Override
     public List<Offer> getByFixtureAndBookmakerId(long fixtureId, long bookmakerId) {
-        UriComponents uriComponents = uriBuilder.getUriComponents(BOOKMAKER_PATH);
-        return sportmonksRestService.callForEntities(uriComponents.expand(fixtureId, bookmakerId).toUriString(), Offer[].class);
+        return getByFixtureAndBookmakerId(fixtureId, bookmakerId, "");
+    }
+
+    @Override
+    public List<Offer> getByFixtureAndBookmakerId(long fixtureId, long bookmakerId, String includes) {
+        UriComponents uriComponents = uriBuilder.getUriComponents(BOOKMAKER_PATH, INCLUDES);
+        return sportmonksRestService.callForEntities(uriComponents.expand(fixtureId, bookmakerId, includes).toUriString(), Offer[].class);
     }
 
     @Override
     public List<Offer> getByFixtureId(long fixtureId) {
-        UriComponents uriComponents = uriBuilder.getUriComponents(BASE_PATH);
-        return sportmonksRestService.callForEntities(uriComponents.expand(fixtureId).toUriString(), Offer[].class);
+        return getByFixtureId(fixtureId, "");
+    }
+
+    @Override
+    public List<Offer> getByFixtureId(long fixtureId, String includes) {
+        UriComponents uriComponents = uriBuilder.getUriComponents(BASE_PATH, INCLUDES);
+        return sportmonksRestService.callForEntities(uriComponents.expand(fixtureId, includes).toUriString(), Offer[].class);
     }
 
     @Override
     public List<Offer> getByFixtureAndMarketId(long fixtureId, long marketId) {
-        UriComponents uriComponents = uriBuilder.getUriComponents(MARKET_PATH);
-        return sportmonksRestService.callForEntities(uriComponents.expand(fixtureId, marketId).toUriString(), Offer[].class);
+        return getByFixtureAndMarketId(fixtureId, marketId, "");
+    }
+
+    @Override
+    public List<Offer> getByFixtureAndMarketId(long fixtureId, long marketId, String includes) {
+        UriComponents uriComponents = uriBuilder.getUriComponents(MARKET_PATH, INCLUDES);
+        return sportmonksRestService.callForEntities(uriComponents.expand(fixtureId, marketId, includes).toUriString(), Offer[].class);
     }
 }

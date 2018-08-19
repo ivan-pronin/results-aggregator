@@ -1,198 +1,201 @@
 package com.sportmonks.aggregate.core.data.entity;
 
 import com.fasterxml.jackson.annotation.*;
-import com.sportmonks.aggregate.core.data.structure.Coachs;
-import com.sportmonks.aggregate.core.data.structure.FifaRanking;
-import com.sportmonks.aggregate.core.data.structure.Squad;
-import com.sportmonks.aggregate.core.data.structure.UefaRanking;
+import com.sportmonks.aggregate.core.data.structure.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "id", "legacy_id", "name", "twitter", "country_id", "national_team", "founded", "logo_path", "venue_id", "squad", "venue", "coach",
-		"fifaranking", "uefaranking" })
+@JsonPropertyOrder({"id", "legacy_id", "name", "twitter", "country_id", "national_team", "founded", "logo_path", "venue_id", "squad", "venue", "coach",
+        "fifaranking", "uefaranking"})
 public class Team {
 
-	@JsonProperty("id")
-	private Long id;
-	@JsonProperty("legacy_id")
-	private Integer legacyId;
-	@JsonProperty("name")
-	private String name;
-	@JsonProperty("twitter")
-	private Object twitter;
-	@JsonProperty("country_id")
-	private Long countryId;
-	@JsonProperty("national_team")
-	private Boolean nationalTeam;
-	@JsonProperty("founded")
-	private Integer founded;
-	@JsonProperty("logo_path")
-	private String logoPath;
-	@JsonProperty("venue_id")
-	private Long venueId;
-	@JsonProperty("squad")
-	private Squad squad;
-	@JsonProperty("venue")
-	private Venue venue;
-	@JsonProperty("coach")
-	private Coachs coachs;
-	@JsonProperty("fifaranking")
-	private FifaRanking fifaRanking;
-	@JsonProperty("uefaranking")
-	private UefaRanking uefaRanking;
-	@JsonIgnore
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    @JsonProperty("id")
+    private Long id;
+    @JsonProperty("legacy_id")
+    private Integer legacyId;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("twitter")
+    private Object twitter;
+    @JsonProperty("country_id")
+    private Long countryId;
+    @JsonProperty("national_team")
+    private Boolean nationalTeam;
+    @JsonProperty("founded")
+    private Integer founded;
+    @JsonProperty("logo_path")
+    private String logoPath;
+    @JsonProperty("venue_id")
+    private Long venueId;
+    @JsonProperty("squad")
+    private Squad squad;
+    @JsonProperty("venue")
+    private Venue venue;
+    @JsonProperty("coach")
+    private Coachs coachs;
+    @JsonProperty("fifaranking")
+    private FifaRanking fifaRanking;
+    @JsonProperty("uefaranking")
+    private UefaRanking uefaRanking;
 
-	@JsonProperty("id")
-	public Long getId() {
-		return id;
-	}
+    private Stats stats;
 
-	@JsonProperty("id")
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-	@JsonProperty("legacy_id")
-	public Integer getLegacyId() {
-		return legacyId;
-	}
+    @JsonProperty("id")
+    public Long getId() {
+        return id;
+    }
 
-	@JsonProperty("legacy_id")
-	public void setLegacyId(Integer legacyId) {
-		this.legacyId = legacyId;
-	}
+    @JsonProperty("id")
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	@JsonProperty("name")
-	public String getName() {
-		return name;
-	}
+    @JsonProperty("legacy_id")
+    public Integer getLegacyId() {
+        return legacyId;
+    }
 
-	@JsonProperty("name")
-	public void setName(String name) {
-		this.name = name;
-	}
+    @JsonProperty("legacy_id")
+    public void setLegacyId(Integer legacyId) {
+        this.legacyId = legacyId;
+    }
 
-	@JsonProperty("twitter")
-	public Object getTwitter() {
-		return twitter;
-	}
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
 
-	@JsonProperty("twitter")
-	public void setTwitter(Object twitter) {
-		this.twitter = twitter;
-	}
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	@JsonProperty("country_id")
-	public Long getCountryId() {
-		return countryId;
-	}
+    @JsonProperty("twitter")
+    public Object getTwitter() {
+        return twitter;
+    }
 
-	@JsonProperty("country_id")
-	public void setCountryId(Long countryId) {
-		this.countryId = countryId;
-	}
+    @JsonProperty("twitter")
+    public void setTwitter(Object twitter) {
+        this.twitter = twitter;
+    }
 
-	@JsonProperty("national_team")
-	public Boolean getNationalTeam() {
-		return nationalTeam;
-	}
+    @JsonProperty("country_id")
+    public Long getCountryId() {
+        return countryId;
+    }
 
-	@JsonProperty("national_team")
-	public void setNationalTeam(Boolean nationalTeam) {
-		this.nationalTeam = nationalTeam;
-	}
+    @JsonProperty("country_id")
+    public void setCountryId(Long countryId) {
+        this.countryId = countryId;
+    }
 
-	@JsonProperty("founded")
-	public Integer getFounded() {
-		return founded;
-	}
+    @JsonProperty("national_team")
+    public Boolean getNationalTeam() {
+        return nationalTeam;
+    }
 
-	@JsonProperty("founded")
-	public void setFounded(Integer founded) {
-		this.founded = founded;
-	}
+    @JsonProperty("national_team")
+    public void setNationalTeam(Boolean nationalTeam) {
+        this.nationalTeam = nationalTeam;
+    }
 
-	@JsonProperty("logo_path")
-	public String getLogoPath() {
-		return logoPath;
-	}
+    @JsonProperty("founded")
+    public Integer getFounded() {
+        return founded;
+    }
 
-	@JsonProperty("logo_path")
-	public void setLogoPath(String logoPath) {
-		this.logoPath = logoPath;
-	}
+    @JsonProperty("founded")
+    public void setFounded(Integer founded) {
+        this.founded = founded;
+    }
 
-	@JsonProperty("venue_id")
-	public Long getVenueId() {
-		return venueId;
-	}
+    @JsonProperty("logo_path")
+    public String getLogoPath() {
+        return logoPath;
+    }
 
-	@JsonProperty("venue_id")
-	public void setVenueId(Long venueId) {
-		this.venueId = venueId;
-	}
+    @JsonProperty("logo_path")
+    public void setLogoPath(String logoPath) {
+        this.logoPath = logoPath;
+    }
 
-	@JsonProperty("squad")
-	public Squad getSquad() {
-		return squad;
-	}
+    @JsonProperty("venue_id")
+    public Long getVenueId() {
+        return venueId;
+    }
 
-	@JsonProperty("squad")
-	public void setSquad(Squad squad) {
-		this.squad = squad;
-	}
+    @JsonProperty("venue_id")
+    public void setVenueId(Long venueId) {
+        this.venueId = venueId;
+    }
 
-	@JsonProperty("venue")
-	public Venue getVenue() {
-		return venue;
-	}
+    @JsonProperty("squad")
+    public Squad getSquad() {
+        return squad;
+    }
 
-	@JsonProperty("venue")
-	public void setVenue(Venue venue) {
-		this.venue = venue;
-	}
+    @JsonProperty("squad")
+    public void setSquad(Squad squad) {
+        this.squad = squad;
+    }
 
-	@JsonProperty("coach")
-	public Coachs getCoachs() {
-		return coachs;
-	}
+    @JsonProperty("venue")
+    public Venue getVenue() {
+        return venue;
+    }
 
-	@JsonProperty("coach")
-	public void setCoachs(Coachs coachs) {
-		this.coachs = coachs;
-	}
+    @JsonProperty("venue")
+    public void setVenue(Venue venue) {
+        this.venue = venue;
+    }
 
-	@JsonProperty("fifaRanking")
-	public FifaRanking getFifaRanking() {
-		return fifaRanking;
-	}
+    @JsonProperty("coach")
+    public Coachs getCoachs() {
+        return coachs;
+    }
 
-	@JsonProperty("fifaRanking")
-	public void setFifaRanking(FifaRanking fifaRanking) {
-		this.fifaRanking = fifaRanking;
-	}
+    @JsonProperty("coach")
+    public void setCoachs(Coachs coachs) {
+        this.coachs = coachs;
+    }
 
-	@JsonProperty("uefaRanking")
-	public UefaRanking getUefaRanking() {
-		return uefaRanking;
-	}
+    @JsonProperty("fifaRanking")
+    public FifaRanking getFifaRanking() {
+        return fifaRanking;
+    }
 
-	@JsonProperty("uefaRanking")
-	public void setUefaRanking(UefaRanking uefaRanking) {
-		this.uefaRanking = uefaRanking;
-	}
+    @JsonProperty("fifaRanking")
+    public void setFifaRanking(FifaRanking fifaRanking) {
+        this.fifaRanking = fifaRanking;
+    }
 
-	@JsonAnyGetter
-	public Map<String, Object> getAdditionalProperties() {
-		return this.additionalProperties;
-	}
+    @JsonProperty("uefaRanking")
+    public UefaRanking getUefaRanking() {
+        return uefaRanking;
+    }
 
-	@JsonAnySetter
-	public void setAdditionalProperty(String name, Object value) {
-		this.additionalProperties.put(name, value);
-	}
+    @JsonProperty("uefaRanking")
+    public void setUefaRanking(UefaRanking uefaRanking) {
+        this.uefaRanking = uefaRanking;
+    }
 
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    public Stats getStats() {
+        return stats;
+    }
 }

@@ -48,6 +48,7 @@ public class SportmonksRestService implements ISportmonksRestService {
 
     private JsonNode getNode(String url) {
         String responseBody = callForPath(url);
+        System.out.println("RESPONSE: " + responseBody);
         try {
             return objectMapper.readTree(responseBody).path("data");
         } catch (IOException e) {

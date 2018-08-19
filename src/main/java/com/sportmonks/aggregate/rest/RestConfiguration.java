@@ -1,5 +1,6 @@
 package com.sportmonks.aggregate.rest;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sportmonks.aggregate.rest.service.config.GetByIdOrAllRestConfiguration;
 import com.sportmonks.aggregate.rest.service.config.GetByIdOrSeasonRestConfiguration;
@@ -21,7 +22,9 @@ public class RestConfiguration {
 
     @Bean
     public ObjectMapper objectMapper() {
-        return new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.UNWRAP_SINGLE_VALUE_ARRAYS, true);
+        return mapper;
     }
 
     @Bean

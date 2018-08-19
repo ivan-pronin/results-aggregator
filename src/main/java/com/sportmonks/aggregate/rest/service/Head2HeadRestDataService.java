@@ -8,6 +8,8 @@ import org.springframework.web.util.UriComponents;
 
 import java.util.List;
 
+import static com.sportmonks.aggregate.rest.service.constants.Constants.INCLUDES;
+
 @Component
 public class Head2HeadRestDataService implements IHead2HeadRestDataService {
 
@@ -20,7 +22,12 @@ public class Head2HeadRestDataService implements IHead2HeadRestDataService {
 
     @Override
     public List<Fixture> get(long team1Id, long team2Id) {
-        UriComponents uriComponents = uriBuilder.getUriComponents(BASE_PATH);
-        return sportmonksRestService.callForEntities(uriComponents.expand(team1Id, team2Id).toUriString(), Fixture[].class);
+        return get(team1Id, team2Id, "");
+    }
+
+    @Override
+    public List<Fixture> get(long team1Id, long team2Id, String includes) {
+        UriComponents uriComponents = uriBuilder.getUriComponents(BASE_PATH, INCLUDES);
+        return sportmonksRestService.callForEntities(uriComponents.expand(team1Id, team2Id, includes).toUriString(), Fixture[].class);
     }
 }

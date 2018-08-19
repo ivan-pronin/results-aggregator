@@ -7,5 +7,9 @@ public interface IGetByIdOrAllRestDataService<T> {
 
     List<T> getAll();
 
+    List<T> getAll(String includes);
+
     Optional<T> getById(long id);
+
+    Optional<T> getById(long id, String includes);
 }

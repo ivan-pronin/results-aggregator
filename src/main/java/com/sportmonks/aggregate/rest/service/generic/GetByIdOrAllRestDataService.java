@@ -9,6 +9,8 @@ import org.springframework.web.util.UriComponents;
 import java.util.List;
 import java.util.Optional;
 
+import static com.sportmonks.aggregate.rest.service.constants.Constants.INCLUDES;
+
 public class GetByIdOrAllRestDataService<T> implements IGetByIdOrAllRestDataService<T> {
 
     private final String basePath;
@@ -30,13 +32,23 @@ public class GetByIdOrAllRestDataService<T> implements IGetByIdOrAllRestDataServ
 
     @Override
     public List<T> getAll() {
-        UriComponents uriComponents = uriBuilder.getUriComponents(basePath);
-        return sportmonksRestService.callForEntities(uriComponents.toUriString(), arrayClazz);
+        return getAll("");
+    }
+
+    @Override
+    public List<T> getAll(String includes) {
+        UriComponents uriComponents = uriBuilder.getUriComponents(basePath, INCLUDES);
+        return sportmonksRestService.callForEntities(uriComponents.expand(includes).toUriString(), arrayClazz);
     }
 
     @Override
     public Optional<T> getById(long id) {
-        UriComponents uriComponents = uriBuilder.getUriComponents(byIdPath);
-        return sportmonksRestService.callForEntity(uriComponents.expand(id).toUriString(), clazz);
+        return getById(id, "");
+    }
+
+    @Override
+    public Optional<T> getById(long id, String includes) {
+        UriComponents uriComponents = uriBuilder.getUriComponents(byIdPath, INCLUDES);
+        return sportmonksRestService.callForEntity(uriComponents.expand(id, includes).toUriString(), clazz);
     }
 }

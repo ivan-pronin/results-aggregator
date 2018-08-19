@@ -9,6 +9,8 @@ import org.springframework.web.util.UriComponents;
 import java.util.List;
 import java.util.Optional;
 
+import static com.sportmonks.aggregate.rest.service.constants.Constants.INCLUDES;
+
 @Component
 public class FixturesRestDataService implements IFixturesRestDataService {
 
@@ -26,31 +28,57 @@ public class FixturesRestDataService implements IFixturesRestDataService {
 
     @Override
     public List<Fixture> getBetweenDates(String from, String to) {
-        UriComponents uriComponents = uriBuilder.getUriComponents(BETWEEN_DATES);
-        return sportmonksRestService.callForEntities(uriComponents.expand(from, to).toUriString(), Fixture[].class);
+        return getBetweenDates(from, to, "");
+    }
+
+    @Override
+    public List<Fixture> getBetweenDates(String from, String to, String includes) {
+        UriComponents uriComponents = uriBuilder.getUriComponents(BETWEEN_DATES, INCLUDES);
+        return sportmonksRestService.callForEntities(uriComponents.expand(from, to, includes).toUriString(), Fixture[].class);
+
     }
 
     @Override
     public List<Fixture> getBetweenDatesByTeam(String from, String to, long teamId) {
-        UriComponents uriComponents = uriBuilder.getUriComponents(BY_TEAM);
-        return sportmonksRestService.callForEntities(uriComponents.expand(from, to, teamId).toUriString(), Fixture[].class);
+        return getBetweenDatesByTeam(from, to, teamId, "");
+    }
+
+    @Override
+    public List<Fixture> getBetweenDatesByTeam(String from, String to, long teamId, String includes) {
+        UriComponents uriComponents = uriBuilder.getUriComponents(BY_TEAM, INCLUDES);
+        return sportmonksRestService.callForEntities(uriComponents.expand(from, to, teamId, includes).toUriString(), Fixture[].class);
     }
 
     @Override
     public List<Fixture> getForDate(String date) {
-        UriComponents uriComponents = uriBuilder.getUriComponents(FOR_DATE);
-        return sportmonksRestService.callForEntities(uriComponents.expand(date).toUriString(), Fixture[].class);
+        return getForDate(date, "");
+    }
+
+    @Override
+    public List<Fixture> getForDate(String date, String includes) {
+        UriComponents uriComponents = uriBuilder.getUriComponents(FOR_DATE, INCLUDES);
+        return sportmonksRestService.callForEntities(uriComponents.expand(date, includes).toUriString(), Fixture[].class);
     }
 
     @Override
     public Optional<Fixture> getById(long id) {
-        UriComponents uriComponents = uriBuilder.getUriComponents(BY_ID);
-        return sportmonksRestService.callForEntity(uriComponents.expand(id).toUriString(), Fixture.class);
+        return getById(id, "");
+    }
+
+    @Override
+    public Optional<Fixture> getById(long id, String includes) {
+        UriComponents uriComponents = uriBuilder.getUriComponents(BY_ID, INCLUDES);
+        return sportmonksRestService.callForEntity(uriComponents.expand(id, includes).toUriString(), Fixture.class);
     }
 
     @Override
     public List<Fixture> getMultipleByIds(String idsList) {
-        UriComponents uriComponents = uriBuilder.getUriComponents(MULTI);
-        return sportmonksRestService.callForEntities(uriComponents.expand(idsList).toUriString(), Fixture[].class);
+        return getMultipleByIds(idsList, "");
+    }
+
+    @Override
+    public List<Fixture> getMultipleByIds(String idsList, String includes) {
+        UriComponents uriComponents = uriBuilder.getUriComponents(MULTI, INCLUDES);
+        return sportmonksRestService.callForEntities(uriComponents.expand(idsList, includes).toUriString(), Fixture[].class);
     }
 }

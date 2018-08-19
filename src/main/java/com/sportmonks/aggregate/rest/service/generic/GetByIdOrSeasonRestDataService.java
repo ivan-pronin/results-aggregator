@@ -9,6 +9,8 @@ import org.springframework.web.util.UriComponents;
 import java.util.List;
 import java.util.Optional;
 
+import static com.sportmonks.aggregate.rest.service.constants.Constants.INCLUDES;
+
 public class GetByIdOrSeasonRestDataService<T> implements IGetByIdOrSeasonRestDataService<T> {
 
     private final String byIdPath;
@@ -31,13 +33,23 @@ public class GetByIdOrSeasonRestDataService<T> implements IGetByIdOrSeasonRestDa
 
     @Override
     public List<T> getBySeasonId(long seasonId) {
-        UriComponents uriComponents = uriBuilder.getUriComponents(bySeasonIdPath);
-        return sportmonksRestService.callForEntities(uriComponents.expand(seasonId).toUriString(), arrayClazz);
+        return getBySeasonId(seasonId, "");
+    }
+
+    @Override
+    public List<T> getBySeasonId(long seasonId, String includes) {
+        UriComponents uriComponents = uriBuilder.getUriComponents(bySeasonIdPath, INCLUDES);
+        return sportmonksRestService.callForEntities(uriComponents.expand(seasonId, includes).toUriString(), arrayClazz);
     }
 
     @Override
     public Optional<T> getById(long id) {
-        UriComponents uriComponents = uriBuilder.getUriComponents(byIdPath);
-        return sportmonksRestService.callForEntity(uriComponents.expand(id).toUriString(), clazz);
+        return getById(id, "");
+    }
+
+    @Override
+    public Optional<T> getById(long id, String includes) {
+        UriComponents uriComponents = uriBuilder.getUriComponents(byIdPath, INCLUDES);
+        return sportmonksRestService.callForEntity(uriComponents.expand(id, includes).toUriString(), clazz);
     }
 }

@@ -19,7 +19,7 @@ public abstract class GenericGetAllRestDataServiceTest<T> {
     long entityIdToCheck;
 
     @Autowired
-    protected IGetByIdOrAllRestDataService<T> dataService;
+    IGetByIdOrAllRestDataService<T> dataService;
 
     @Test
     public void getAllTest() {

@@ -34,6 +34,13 @@ public class FixturesRestDataServiceTest {
     }
 
     @Test
+    public void getBetweenDatesIncludesTest() {
+        List<Fixture> entities = dataService.getBetweenDates(FROM, FROM, "stats");
+        Assert.assertThat(entities, is(not(empty())));
+        Assert.assertTrue(entities.stream().anyMatch(f -> f.getStats() != null));
+    }
+
+    @Test
     public void getBetweenDatesByTeamTest() {
         List<Fixture> entities = dataService.getBetweenDatesByTeam(FROM, FROM, LOCAL_TEAM_ID);
         Assert.assertThat(entities, is(not(empty())));
@@ -52,6 +59,13 @@ public class FixturesRestDataServiceTest {
         Optional<Fixture> fixture = dataService.getById(FIXTURE_ID);
         Assert.assertTrue(fixture.isPresent());
         Assert.assertEquals(LOCAL_TEAM_ID, (long) fixture.get().getLocalteamId());
+    }
+
+    @Test
+    public void getByIdIncludesTest() {
+        Optional<Fixture> fixture = dataService.getById(FIXTURE_ID, "stats");
+        Assert.assertTrue(fixture.isPresent());
+        Assert.assertNotNull(fixture.get().getStats());
     }
 
     @Test

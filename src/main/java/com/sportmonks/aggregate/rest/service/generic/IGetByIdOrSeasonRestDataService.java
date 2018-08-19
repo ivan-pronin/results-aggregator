@@ -7,5 +7,9 @@ public interface IGetByIdOrSeasonRestDataService<T> {
 
     List<T> getBySeasonId(long seasonId);
 
+    List<T> getBySeasonId(long seasonId, String includes);
+
     Optional<T> getById(long id);
+
+    Optional<T> getById(long id, String includes);
 }

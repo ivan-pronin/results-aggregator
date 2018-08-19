@@ -17,7 +17,7 @@ public class Continent {
 	@JsonProperty("countries")
 	private Countries countries;
 	@JsonIgnore
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	private Map<String, Object> additionalProperties = new HashMap<>();
 
 	@JsonProperty("id")
 	public Long getId() {

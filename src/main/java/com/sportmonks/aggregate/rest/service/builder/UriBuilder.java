@@ -17,4 +17,9 @@ public class UriBuilder implements IUriBuilder {
     public UriComponents getUriComponents(String path) {
         return uriComponentsBuilderSupplier.get().path(path).build();
     }
+
+    @Override
+    public UriComponents getUriComponents(String path, String query) {
+        return uriComponentsBuilderSupplier.get().path(path).queryParam(query).build();
+    }
 }
