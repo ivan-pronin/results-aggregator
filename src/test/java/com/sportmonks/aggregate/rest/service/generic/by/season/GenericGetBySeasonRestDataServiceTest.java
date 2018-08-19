@@ -1,7 +1,7 @@
-package com.sportmonks.aggregate.rest.service;
+package com.sportmonks.aggregate.rest.service.generic.by.season;
 
-import com.sportmonks.aggregate.core.data.entity.Season;
 import com.sportmonks.aggregate.rest.RestConfiguration;
+import com.sportmonks.aggregate.rest.service.generic.IGetByIdOrSeasonRestDataService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,20 +14,23 @@ import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = RestConfiguration.class)
-public class SeasonsRestDataServiceTest {
+public abstract class GenericGetBySeasonRestDataServiceTest<T> {
+
+    long entityIdToCheck;
+    long seasonIdToCheck;
 
     @Autowired
-    private IGetByIdOrAllRestDataService<Season> dataService;
+    IGetByIdOrSeasonRestDataService<T> dataService;
 
     @Test
-    public void getAllTest() {
-        List<Season> entities = dataService.getAll();
+    public void getBySeasonIdTest() {
+        List<T> entities = dataService.getBySeasonId(seasonIdToCheck);
         Assert.assertNotNull(entities.get(0));
     }
 
     @Test
     public void getByIdTest() {
-        Optional<Season> entity = dataService.getById(1273);
+        Optional<T> entity = dataService.getById(entityIdToCheck);
         Assert.assertTrue(entity.isPresent());
         Assert.assertNotNull(entity.get());
     }

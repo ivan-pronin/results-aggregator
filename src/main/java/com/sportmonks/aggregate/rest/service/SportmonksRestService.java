@@ -61,18 +61,4 @@ public class SportmonksRestService implements ISportmonksRestService {
         log.info("Status code: " + response.getStatusCode().value());
         return response.getBody();
     }
-
-//    private String callForPath(String url) {
-//        log.info("Executing call for url: " + url);
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-//        HttpEntity<String> entity = new HttpEntity<>(headers);
-//        ResponseEntity<String> response = restTemplate.exchange(
-//                url,
-//                HttpMethod.GET,
-//                entity,
-//                String.class);
-//        log.info("Status code: " + response.getStatusCode().value());
-//        return response.getBody();
-//    }
 }

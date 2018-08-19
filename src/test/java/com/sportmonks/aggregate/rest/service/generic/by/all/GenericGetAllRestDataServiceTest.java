@@ -1,8 +1,7 @@
-package com.sportmonks.aggregate.rest.service;
+package com.sportmonks.aggregate.rest.service.generic.by.all;
 
-import com.sportmonks.aggregate.core.data.entity.League;
 import com.sportmonks.aggregate.rest.RestConfiguration;
-import org.hamcrest.CoreMatchers;
+import com.sportmonks.aggregate.rest.service.generic.IGetByIdOrAllRestDataService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,24 +14,22 @@ import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = RestConfiguration.class)
-public class LeaguesRestDataServiceTest {
+public abstract class GenericGetAllRestDataServiceTest<T> {
 
-    private static final int SUPERLIGA_ID = 271;
+    long entityIdToCheck;
 
     @Autowired
-    private IGetByIdOrAllRestDataService<League> dataService;
+    protected IGetByIdOrAllRestDataService<T> dataService;
 
     @Test
     public void getAllTest() {
-        List<League> entities = dataService.getAll();
-        Assert.assertEquals(2, entities.size());
-        Assert.assertNotNull(entities.get(1));
-        Assert.assertThat(entities.stream().anyMatch(l -> l.getId() == SUPERLIGA_ID), CoreMatchers.is(true));
+        List<T> entities = dataService.getAll();
+        Assert.assertNotNull(entities.get(0));
     }
 
     @Test
     public void getByIdTest() {
-        Optional<League> entity = dataService.getById(SUPERLIGA_ID);
+        Optional<T> entity = dataService.getById(entityIdToCheck);
         Assert.assertTrue(entity.isPresent());
         Assert.assertNotNull(entity.get());
     }

@@ -1,4 +1,4 @@
-package com.sportmonks.aggregate.rest.service;
+package com.sportmonks.aggregate.rest.service.generic;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,12 +1,11 @@
-package com.sportmonks.aggregate.rest.service;
+package com.sportmonks.aggregate.rest.service.generic;
 
+import com.sportmonks.aggregate.rest.service.ISportmonksRestService;
 import com.sportmonks.aggregate.rest.service.builder.IUriBuilder;
 import com.sportmonks.aggregate.rest.service.types.TypeContainerData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.util.UriComponents;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +21,6 @@ public class GetByIdOrAllRestDataService<T> implements IGetByIdOrAllRestDataServ
     @Autowired
     private IUriBuilder uriBuilder;
 
-    @SuppressWarnings("unchecked")
     public GetByIdOrAllRestDataService(TypeContainerData<T> typeContainerData) {
         this.basePath = typeContainerData.getBasePath();
         byIdPath = typeContainerData.getBasePath() + "/{id}";
@@ -30,7 +28,6 @@ public class GetByIdOrAllRestDataService<T> implements IGetByIdOrAllRestDataServ
         this.arrayClazz = typeContainerData.getArrayClazz();
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public List<T> getAll() {
         UriComponents uriComponents = uriBuilder.getUriComponents(basePath);
@@ -41,24 +38,5 @@ public class GetByIdOrAllRestDataService<T> implements IGetByIdOrAllRestDataServ
     public Optional<T> getById(long id) {
         UriComponents uriComponents = uriBuilder.getUriComponents(byIdPath);
         return sportmonksRestService.callForEntity(uriComponents.expand(id).toUriString(), clazz);
-    }
-
-    @SuppressWarnings("unchecked")
-    private Class<T> getGenericClass() {
-        String clazz = this.getClass().getGenericSuperclass().getTypeName();
-        System.out.println("CLASS:" + clazz);
-        Type[] actualTypeArguments = ((ParameterizedType) getClass().getGenericSuperclass())
-                .getActualTypeArguments();
-        return (Class<T>) actualTypeArguments[0].getClass();
-    }
-
-    @SuppressWarnings("unchecked")
-
-    private Class<T[]> getGenericArrayClass() {
-        Type[] actualTypeArguments = ((ParameterizedType) getClass().getGenericSuperclass())
-                .getActualTypeArguments();
-//        getGenericArrayClass
-        Class<? extends Type[]> aClass = actualTypeArguments.getClass();
-        return (Class<T[]>) getGenericClass();
     }
 }
