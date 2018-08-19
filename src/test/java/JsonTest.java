@@ -1,7 +1,6 @@
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sportmonks.client.core.data.entity.League;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +9,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.FileCopyUtils;
-import com.sportmonks.aggregate.core.data.entity.League;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,21 +19,8 @@ import java.util.List;
 @ContextConfiguration(classes = TestConfiguration.class)
 public class JsonTest {
 
-    @Value("classpath:getLeagues.json")
-    private Resource jsonFile;
     @Value("classpath:getLeaguesFull.json")
     private Resource jsonFileFull;
-
-    //    @Test
-    public void testReadFromJson() throws IOException {
-        System.out.println(jsonFile.getFilename());
-        String copyToString = FileCopyUtils.copyToString(new FileReader(jsonFile.getFile()));
-        ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.UNWRAP_ROOT_VALUE, true);
-        List<League> result = mapper.readerFor(new TypeReference<List<League>>() {
-        }).withRootName("data").readValue(copyToString);
-        Assert.assertEquals(2, result.size());
-        Assert.assertNotNull(result.get(1));
-    }
 
     @Test
     public void testReadFromJsonFull() throws IOException {
@@ -49,7 +34,7 @@ public class JsonTest {
         Assert.assertNotNull(result.get(1));
     }
 
-    //    @Test
+    @Test
     public void testLeagueDeser() throws IOException {
         String jsonText = "{\n" +
                 "\t\"id\": 271,\n" +
